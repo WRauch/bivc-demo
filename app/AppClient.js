@@ -3,9 +3,9 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import Home from './pages'
-import Navigation from './nav/page';
-import Calendar from './pages/calendar'
+import Home from '../things/page'
+import Navigation from '../nav/page';
+import Calendar from '../things/calendar/page';
 
 export default function AppClient() {
   return (

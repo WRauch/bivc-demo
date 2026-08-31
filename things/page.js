@@ -1,10 +1,11 @@
+'use client'
 import React from "react";
 
 import Image from 'next/image'
-import logo from "../../images/bivc_logo.jpg"
-import boat from "../../images/lillyb.jpg"
+import logo from "../images/bivc_logo.jpg"
+import boat from "../images/lillyb.jpg"
 import { useState, useEffect } from 'react';
-import Search from '../../search';
+import Search from '../search';
 
 const Home = () => {
   const [results, setResults] = useState([]);

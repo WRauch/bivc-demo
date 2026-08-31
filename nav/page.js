@@ -22,8 +22,8 @@ function isActivePath(pathname, to) {
 }
 
 export default function Navigation() {
-  const { pathname } = useLocation();
-
+  // const { pathname } = useLocation();
+      const pathname = "/"
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur">
       <div className="mx-auto flex h-14 w-full max-w-6xl items-center gap-4 px-4">
