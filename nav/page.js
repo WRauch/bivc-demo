@@ -2,13 +2,13 @@
 
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { CalendarDays, ChevronDown, Home, Info, Menu } from 'lucide-react';
+import { CalendarDays, ChevronDown, Home, Info, Menu, File } from 'lucide-react';
 
 const navItems = [
   { to: '/', label: 'Home', Icon: Home },
   { to: '/ferry', label: 'Ferry', Icon: Info },
   { to: '/calendar', label: 'Calendar', Icon: CalendarDays },
-  { to: '/documents', label: 'Documents', Icon: Info },
+  { to: '/documents', label: 'Documents', Icon: File },
   { to: '/service-providers', label: 'Service Providers', Icon: Info },
 ];
 
@@ -109,7 +109,7 @@ export default function Navigation() {
       </div>
 
       <div className="z-50 border-t border-border/60 bg-blue-600 text-center text-sm text-white">
-        ANY Emergency Read &nbsp; <a href="docs/Other/S - Emergency Basics.pdf" className="bg-green-800">Emergency Basics</a>
+        ANY Emergency Read &nbsp; <a href="https://bivc.net/wp-content/uploads/2024/05/S-Emergency-Basics.pdf" className="bg-green-800" target="_blank">Emergency Basics</a>
         &nbsp; & call 911
       </div>
     </header>

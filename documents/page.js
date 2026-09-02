@@ -1,5 +1,5 @@
+'use client'
 import React from "react";
-import Nav from "../nav";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -9,7 +9,6 @@ const Docs = () => {
     return(
 
     <div className="text-white">
-        <Nav/>
         <div>
             <h1>
                 Documents
@@ -17,8 +16,8 @@ const Docs = () => {
         <div className="input-group-append float-end">
 
 
-        <select class="custom-select" id="docselect" onChange={(x) => setDocType(x.target.value)}>
-            <option selected value="Charters">Charters</option>
+        <select className="custom-select" id="docselect" value={docType} onChange={(x) => setDocType(x.target.value)}>
+            <option value="Charters">Charters</option>
             <option value="Job Descriptions">Job Descriptions</option>
             <option value="By-Laws">By-Laws & Ordinances</option>
             <option value="Forms">Forms</option>
