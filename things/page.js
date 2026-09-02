@@ -41,7 +41,7 @@ const Home = () => {
  return(
 
   <div className='flex min-h-screen flex-col items-center rounded-2xl bg-gray-500 p-6'>
-    <Image src={logo} alt="logo" className="w-600"/>
+    <Image src={logo} alt="logo" className="mx-auto w-full max-w-[500px]" />
 
     <div className='mt-6 flex w-full max-w-5xl flex-col items-center gap-6 md:flex-row md:items-stretch md:justify-center'>
       <div className='flex w-full max-w-[700px] flex-col justify-center rounded-2xl bg-green-900 p-6 text-white shadow-[0_10px_25px_rgba(0,0,0,0.12)]'>
@@ -138,7 +138,7 @@ const Home = () => {
 
       <div className='rounded-2xl bg-green-900 p-6 text-white shadow-[0_10px_25px_rgba(0,0,0,0.12)]'>
         <h2 className='mb-3 text-xl font-semibold'>Island Resources</h2>
-        <p className='rounded-xl bg-white/10 px-3.5 py-3'>The library and recycling station are open today.</p>
+        <p className='rounded-xl bg-white/10 px-3.5 py-3'>Text.</p>
       </div>
     </div>
 

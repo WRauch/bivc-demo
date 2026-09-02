@@ -6,10 +6,10 @@ import { CalendarDays, ChevronDown, Home, Info, Menu, File } from 'lucide-react'
 
 const navItems = [
   { to: '/', label: 'Home', Icon: Home },
-  { to: '/ferry', label: 'Ferry', Icon: Info },
+  // { to: '/ferry', label: 'Ferry', Icon: Info },
   { to: '/calendar', label: 'Calendar', Icon: CalendarDays },
   { to: '/documents', label: 'Documents', Icon: File },
-  { to: '/service-providers', label: 'Service Providers', Icon: Info },
+  // { to: '/service-providers', label: 'Service Providers', Icon: Info },
 ];
 
 function isActivePath(pathname, to) {
