@@ -12,6 +12,7 @@ const Home = () => {
   const [results, setResults] = useState([]);
   const [data, setData] = useState([]);
   const [date, setDate] = useState(null);
+  const [tempToday, setTempToday] = useState(null);
   useEffect(() => {
     // Fetch all the data you want to be searchable
     // This could be from an API, static files, etc.
@@ -37,6 +38,19 @@ const Home = () => {
     );
 
     setResults(filteredResults);
+  };
+  const fetchwetherData = async (latitude, longitude) => {
+    try {
+      const response = await fetch(`https://api.weather.gov/points/${latitude},${longitude}`);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      console.log(data);
+    }
+    catch (error) {
+      console.error('There was a problem with the fetch operation:', error);
+    }
   };
  return(
 
@@ -133,12 +147,65 @@ const Home = () => {
 
       <div className='rounded-2xl bg-green-900 p-6 text-white shadow-[0_10px_25px_rgba(0,0,0,0.12)]'>
         <h2 className='mb-3 text-xl font-semibold'>Weather</h2>
-        <p className='rounded-xl bg-white/10 px-3.5 py-3'>Stub forecast: sunny, 72°F, with a light breeze.</p>
+
+           <div>
+            <p className='mb-3 text-sm'>Current Weather:</p>
+            <div className='flex items-center gap-3'>
+              <div className='h-12 w-12 rounded-full bg-white/10'></div>
+              <div>
+                <p className='text-lg font-semibold'>Loading...</p>
+                <p className='text-sm'>Temperature: --°F</p>
+                <p className='text-sm'>Condition: --</p>
+              </div>
+            </div>
+          </div>
+
+          <button
+            onClick={() => fetchwetherData(43.799000, -70.069800)}
+            className='mt-4 rounded-xl bg-white/10 px-4 py-2 text-sm font-semibold transition hover:bg-white/20'
+          >
+            Refresh Weather
+          </button>
+          <div>
+            {tempToday}
+          </div>
+ 
       </div>
 
       <div className='rounded-2xl bg-green-900 p-6 text-white shadow-[0_10px_25px_rgba(0,0,0,0.12)]'>
-        <h2 className='mb-3 text-xl font-semibold'>Island Resources</h2>
-        <p className='rounded-xl bg-white/10 px-3.5 py-3'>Text.</p>
+        <h2 className='mb-3 text-xl font-semibold'>Online Forms</h2>
+        <ul className='list-disc space-y-2 pl-5'>
+          <li>
+            <a href="https://bivc.net/island-equipment-waiver" className="underline" target="_blank" rel="noopener noreferrer">
+             Island Equipment Waiver
+            </a>
+          </li>
+          <li>
+            <a href="https://bivc.net/voter-registration" className="underline" target="_blank" rel="noopener noreferrer">
+              Voter Registration
+            </a>
+          </li>
+          <li>
+            <a href="https://bivc.net/mooring-registration" className="underline" target="_blank" rel="noopener noreferrer">
+              Mooring Registration
+            </a>
+          </li>
+          <li>
+            <a href="https://bivc.net/request-for-public-information" className="underline" target="_blank" rel="noopener noreferrer">
+              Request For Public Information
+            </a>
+          </li>
+          <li>
+            <a href="https://bivc.net/annual-committee-budget-request" className="underline" target="_blank" rel="noopener noreferrer">
+              Annual Committee Budget Request
+            </a>
+          </li>
+          <li>
+            <a href="https://bivc.net/chipping-request-form" className="underline" target="_blank" rel="noopener noreferrer">
+              Chipping Request Form
+            </a>
+            </li>
+          </ul>
       </div>
     </div>
 
