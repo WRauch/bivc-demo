@@ -5,8 +5,11 @@ import Image from 'next/image'
 import logo from "../images/bivc_logo.jpg"
 import boat from "../images/lillyb.jpg"
 import truck from "../images/bivc-truck.jpg"
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Search from '../search';
+
+
+//Lat long 43.799000, -70.069800
 
 const Home = () => {
   const [results, setResults] = useState([]);
@@ -39,19 +42,24 @@ const Home = () => {
 
     setResults(filteredResults);
   };
-  const fetchwetherData = async (latitude, longitude) => {
+  const fetchwetherData = useCallback(async () => {
+    setResults([]); // Clear previous results
     try {
-      const response = await fetch(`https://api.weather.gov/points/${latitude},${longitude}`);
+      const response = await fetch(`https://api.weather.gov/gridpoints/GYX/77,65/forecast`);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
-      console.log(data);
+      // currently takes first 8 points can go up to 14
+      setResults(data.properties.periods.slice(0, 8));
     }
     catch (error) {
       console.error('There was a problem with the fetch operation:', error);
     }
-  };
+  }, []);
+  useEffect(() => {
+    fetchwetherData();
+  }, [fetchwetherData]);
  return(
 
   <div className='flex min-h-screen flex-col items-center rounded-2xl bg-gray-500 p-6'>
@@ -148,64 +156,80 @@ const Home = () => {
       <div className='rounded-2xl bg-green-900 p-6 text-white shadow-[0_10px_25px_rgba(0,0,0,0.12)]'>
         <h2 className='mb-3 text-xl font-semibold'>Weather</h2>
 
-           <div>
-            <p className='mb-3 text-sm'>Current Weather:</p>
-            <div className='flex items-center gap-3'>
-              <div className='h-12 w-12 rounded-full bg-white/10'></div>
-              <div>
-                <p className='text-lg font-semibold'>Loading...</p>
-                <p className='text-sm'>Temperature: --°F</p>
-                <p className='text-sm'>Condition: --</p>
+          <div className='mt-4 space-y-2'>
+            {results.map((period) => (
+              <div key={period.number} className='rounded-xl bg-white/10 px-3 py-2 text-sm'>
+                <p className='font-semibold'>{period.name}</p>
+                <p>{period.temperature}°{period.temperatureUnit} - {period.shortForecast}</p>
               </div>
-            </div>
+            ))}
           </div>
 
-          <button
-            onClick={() => fetchwetherData(43.799000, -70.069800)}
-            className='mt-4 rounded-xl bg-white/10 px-4 py-2 text-sm font-semibold transition hover:bg-white/20'
-          >
-            Refresh Weather
-          </button>
-          <div>
-            {tempToday}
-          </div>
- 
       </div>
 
-      <div className='rounded-2xl bg-green-900 p-6 text-white shadow-[0_10px_25px_rgba(0,0,0,0.12)]'>
-        <h2 className='mb-3 text-xl font-semibold'>Online Forms</h2>
-        <ul className='list-disc space-y-2 pl-5'>
-          <li>
-            <a href="https://bivc.net/island-equipment-waiver" className="underline" target="_blank" rel="noopener noreferrer">
-             Island Equipment Waiver
-            </a>
-          </li>
-          <li>
-            <a href="https://bivc.net/voter-registration" className="underline" target="_blank" rel="noopener noreferrer">
-              Voter Registration
-            </a>
-          </li>
-          <li>
-            <a href="https://bivc.net/mooring-registration" className="underline" target="_blank" rel="noopener noreferrer">
-              Mooring Registration
-            </a>
-          </li>
-          <li>
-            <a href="https://bivc.net/request-for-public-information" className="underline" target="_blank" rel="noopener noreferrer">
-              Request For Public Information
-            </a>
-          </li>
-          <li>
-            <a href="https://bivc.net/annual-committee-budget-request" className="underline" target="_blank" rel="noopener noreferrer">
-              Annual Committee Budget Request
-            </a>
-          </li>
-          <li>
-            <a href="https://bivc.net/chipping-request-form" className="underline" target="_blank" rel="noopener noreferrer">
-              Chipping Request Form
-            </a>
+      <div className='flex flex-col gap-6'>
+        <div className='rounded-2xl bg-green-900 p-6 text-white shadow-[0_10px_25px_rgba(0,0,0,0.12)]'>
+          <h2 className='mb-3 text-xl font-semibold'>Online Forms</h2>
+          <ul className='list-disc space-y-2 pl-5'>
+            <li>
+              <a href="https://bivc.net/island-equipment-waiver" className="underline" target="_blank" rel="noopener noreferrer">
+               Island Equipment Waiver
+              </a>
+            </li>
+            <li>
+              <a href="https://bivc.net/voter-registration" className="underline" target="_blank" rel="noopener noreferrer">
+                Voter Registration
+              </a>
+            </li>
+            <li>
+              <a href="https://bivc.net/mooring-registration" className="underline" target="_blank" rel="noopener noreferrer">
+                Mooring Registration
+              </a>
+            </li>
+            <li>
+              <a href="https://bivc.net/request-for-public-information" className="underline" target="_blank" rel="noopener noreferrer">
+                Request For Public Information
+              </a>
+            </li>
+            <li>
+              <a href="https://bivc.net/annual-committee-budget-request" className="underline" target="_blank" rel="noopener noreferrer">
+                Annual Committee Budget Request
+              </a>
+            </li>
+            <li>
+              <a href="https://bivc.net/chipping-request-form" className="underline" target="_blank" rel="noopener noreferrer">
+                Chipping Request Form
+              </a>
             </li>
           </ul>
+        </div>
+
+        <div className='rounded-2xl bg-green-900 p-6 text-white shadow-[0_10px_25px_rgba(0,0,0,0.12)]'>
+          <h2 className='mb-3 text-xl font-semibold'>Service Providers</h2>
+          <ul>
+            <li>
+          <a href="http://john-blood-36rf.squarespace.com/" className="underline">
+            Coastal Barge and Mooring
+          </a>
+            </li>
+
+                        <li>
+          <a href="https://brewersouthfreeport.com/" className="underline">
+            Brewer South Freeport Maine
+          </a>
+            </li>            <li>
+          <a href="https://www.stroutspoint.com/" className="underline">
+            Strout's Point Wharf Company
+          </a>
+            </li>            <li>
+          <a href="mailto:vinalenergy@gmail.com" className="underline">
+            Vinal Energy (Email)
+          </a>
+            </li>
+
+          </ul>
+
+        </div>
       </div>
     </div>
 

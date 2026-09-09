@@ -5,14 +5,14 @@ export default function Footer() {
 		<footer className="border-t border-gray-00 bg-gray-700 text-white">
 			<div className="mx-auto grid w-full max-w-6xl px-4 py-8 md:grid-cols-4 md:divide-x md:divide-gray-300">
 				<section className="px-0 py-5 first:pt-0 last:pb-0 md:px-6 md:py-0 first:md:pl-0 last:md:pr-0">
-					<h2 className="mb-2 text-lg font-semibold">About</h2>
+					<h2 className="flex mb-2 text-lg font-semibold justify-center">About</h2>
 					<p className="text-sm leading-6 text-gray-300">
 						<strong className="text-white">BIVC</strong> is the Bustins Island Village Corporation, a self-governing entity within the territorial boundaries of the Town of Freeport.
 					</p>
 				</section>
 
 				<section className="border-t border-gray-300 px-0 py-5 md:border-t-0 md:px-6 md:py-0">
-					<h2 className="mb-2 text-lg font-semibold">Contact</h2>
+					<h2 className="flex mb-2 text-lg font-semibold justify-center">Contact</h2>
 					<div className="space-y-3 text-sm leading-6 text-gray-300">
 						<address className="not-italic">
 							<span className="block text-white">Bustins Island Village Corporation</span>
@@ -28,7 +28,7 @@ export default function Footer() {
 				</section>
 
 				<section className="border-t border-gray-300 px-0 py-5 last:pb-0 md:border-t-0 md:px-6 md:py-0">
-					<h2 className="mb-2 text-lg font-semibold">Meeting Info</h2>
+					<h2 className="flex mb-2 text-lg font-semibold justify-center">Meeting Info</h2>
 					<div className="space-y-3 text-sm leading-6 text-gray-300">
 						<a className="underline hover:text-white" href="https://bivc.net/wp-content/uploads/2023/08/Seasonal-Meetings.pdf" target="_blank" rel="noopener noreferrer">Board of Overseers season meeting schedule through 2026.</a>
 						<p>Schedule changes are shown under Upcoming Meetings.</p>
@@ -43,7 +43,7 @@ export default function Footer() {
 				</section>
 
 				<section className="border-t border-gray-300 px-0 py-5 last:pb-0 md:border-t-0 md:px-6 md:py-0">
-					<h2 className="mb-2 text-lg font-semibold">Local Information</h2>
+					<h2 className="flex mb-2 text-lg font-semibold justify-center">Local Information</h2>
 					<ul className=" space-y-1 text-sm leading-6 text-gray-300">
 						<li><a className="underline hover:text-white" href="https://www.freeportmaine.com/" target="_blank" rel="noopener noreferrer">Town of Freeport</a></li>
 						<li><a className="underline hover:text-white" href="https://www.maine.gov" target="_blank" rel="noopener noreferrer">State of Maine</a></li>

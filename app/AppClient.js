@@ -8,6 +8,7 @@ import Navigation from '../nav/page';
 import Footer from '../footer/page';
 import Calendar from '../things/calendar/page';
 import Documents from '../documents/page';
+import BivcInfo from '../bivc-info/page';
 
 export default function AppClient() {
   return (
@@ -20,6 +21,7 @@ export default function AppClient() {
             <Route path="/" element={<Home />} />
             <Route path="/calendar" element={<Calendar />} />
             <Route path="/documents" element={<Documents />} />
+            <Route path="/bivc-info" element={<BivcInfo />} />
             {/* <Route path="/order" element={<Orders />} />
             <Route path="/game" element={<Canvas />} />
             <Route path="/testing" element={<Testing />} /> */}

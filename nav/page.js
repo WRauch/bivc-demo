@@ -9,6 +9,7 @@ const navItems = [
   // { to: '/ferry', label: 'Ferry', Icon: Info },
   { to: '/calendar', label: 'Calendar', Icon: CalendarDays },
   { to: '/documents', label: 'Documents', Icon: File },
+  { to: '/bivc-info', label: 'BIVC Info', Icon: Info },
   // { to: '/service-providers', label: 'Service Providers', Icon: Info },
 ];
 
@@ -55,12 +56,12 @@ export default function Navigation() {
                 className={[
                   'inline-flex shrink-0 items-center gap-2 rounded-md px-3 py-2 text-base font-medium transition-colors sm:text-lg',
                   active
-                    ? 'bg-accent text-accent-foreground'
+                    ? 'bg-green-900 text-accent-foreground'
                     : 'text-muted-foreground hover:bg-accent/60 hover:text-foreground',
                 ].join(' ')}
               >
                 <Icon className="h-4 w-4" />
-                <span className={isCompact && to === '/' ? 'hidden sm:inline' : ''}>{label}</span>
+                <span className=''>{label}</span>
               </Link>
             );
           })}
@@ -93,7 +94,7 @@ export default function Navigation() {
                       className={[
                         'flex items-center gap-3 px-4 py-3 text-sm transition-colors',
                         active
-                          ? 'bg-accent text-accent-foreground'
+                          ? 'bg-green-900 text-accent-foreground'
                           : 'text-muted-foreground hover:bg-accent/60 hover:text-foreground',
                       ].join(' ')}
                     >
